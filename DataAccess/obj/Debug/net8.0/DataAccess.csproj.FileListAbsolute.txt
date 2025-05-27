@@ -1,0 +1,15 @@
+D:\Project\QRTrackerApp\DataAccess\bin\Debug\net8.0\DataAccess.deps.json
+D:\Project\QRTrackerApp\DataAccess\bin\Debug\net8.0\DataAccess.runtimeconfig.json
+D:\Project\QRTrackerApp\DataAccess\bin\Debug\net8.0\DataAccess.dll
+D:\Project\QRTrackerApp\DataAccess\bin\Debug\net8.0\DataAccess.pdb
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.csproj.AssemblyReference.cache
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.AssemblyInfoInputs.cache
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.AssemblyInfo.cs
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.csproj.CoreCompileInputs.cache
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.dll
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\refint\DataAccess.dll
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.pdb
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.genruntimeconfig.cache
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\ref\DataAccess.dll
+D:\Project\QRTrackerApp\DataAccess\bin\Debug\net8.0\appsettings.json

@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project\\QRTrackerApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|d:\\project\\qrtrackerapp\\qrtrackerapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|solutionrelative:qrtrackerapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36512609-E1B5-4679-A556-D892373B7088}|DataAccess\\DataAccess.csproj|d:\\project\\qrtrackerapp\\dataaccess\\models\\box.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36512609-E1B5-4679-A556-D892373B7088}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\box.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA2416D6-192C-49A3-A6D6-AD8FDB5B52B7}|Repository\\Repository.csproj|d:\\project\\qrtrackerapp\\repository\\boxesrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CA2416D6-192C-49A3-A6D6-AD8FDB5B52B7}|Repository\\Repository.csproj|solutionrelative:repository\\boxesrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Box.cs",
+              "DocumentMoniker": "D:\\Project\\QRTrackerApp\\DataAccess\\Models\\Box.cs",
+              "RelativeDocumentMoniker": "DataAccess\\Models\\Box.cs",
+              "ToolTip": "D:\\Project\\QRTrackerApp\\DataAccess\\Models\\Box.cs",
+              "RelativeToolTip": "DataAccess\\Models\\Box.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T03:35:54.384Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BoxesRepo.cs",
+              "DocumentMoniker": "D:\\Project\\QRTrackerApp\\Repository\\BoxesRepo.cs",
+              "RelativeDocumentMoniker": "Repository\\BoxesRepo.cs",
+              "ToolTip": "D:\\Project\\QRTrackerApp\\Repository\\BoxesRepo.cs",
+              "RelativeToolTip": "Repository\\BoxesRepo.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA1wBUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T03:17:52.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "QRTrackerApp\\MainWindow.xaml",
+              "ToolTip": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\MainWindow.xaml",
+              "RelativeToolTip": "QRTrackerApp\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-27T03:08:02.533Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
