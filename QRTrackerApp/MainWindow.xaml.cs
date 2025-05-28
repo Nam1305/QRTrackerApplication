@@ -17,19 +17,11 @@ namespace QRTrackerApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        BoxesServices boxesServices;
 
         public MainWindow()
         {
             InitializeComponent();
-            LoadDataGridBoxes();
-        }
-
-        public void LoadDataGridBoxes()
-        {
-            boxesServices = new BoxesServices();    
-            var boxes = boxesServices.GetAllBoxes();
-            this.dgDataBox.ItemsSource = boxes; 
+           
         }
     }
 }

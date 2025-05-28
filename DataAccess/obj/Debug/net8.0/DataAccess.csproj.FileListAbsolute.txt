@@ -13,3 +13,4 @@ D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.pdb
 D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.genruntimeconfig.cache
 D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\ref\DataAccess.dll
 D:\Project\QRTrackerApp\DataAccess\bin\Debug\net8.0\appsettings.json
+D:\Project\QRTrackerApp\DataAccess\obj\Debug\net8.0\DataAccess.sourcelink.json
