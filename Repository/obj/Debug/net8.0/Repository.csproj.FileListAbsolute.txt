@@ -13,3 +13,5 @@ D:\Project\QRTrackerApp\Repository\obj\Debug\net8.0\Repository.dll
 D:\Project\QRTrackerApp\Repository\obj\Debug\net8.0\refint\Repository.dll
 D:\Project\QRTrackerApp\Repository\obj\Debug\net8.0\Repository.pdb
 D:\Project\QRTrackerApp\Repository\obj\Debug\net8.0\ref\Repository.dll
+D:\Project\QRTrackerApp\Repository\bin\Debug\net8.0\appsettings.json
+D:\Project\QRTrackerApp\Repository\obj\Debug\net8.0\Repository.sourcelink.json

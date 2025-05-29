@@ -77,3 +77,15 @@ D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\QRTrackerApp.pdb
 D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\QRTrackerApp.genruntimeconfig.cache
 D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\ref\QRTrackerApp.dll
 D:\Project\QRTrackerApp\QRTrackerApp\bin\Debug\net8.0-windows\appsettings.json
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\Styles.baml
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\QRTrackerApp.sourcelink.json
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\ListProduct.g.cs
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\ListProduct.baml
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\ViewHistory.g.cs
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\ViewHistory.baml
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\AddNewProductWindow.g.cs
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\LoginWindow.g.cs
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\AddNewProductWindow.baml
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\LoginWindow.baml
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\EditProductWindow.g.cs
+D:\Project\QRTrackerApp\QRTrackerApp\obj\Debug\net8.0-windows\EditProductWindow.baml

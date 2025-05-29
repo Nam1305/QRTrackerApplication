@@ -5,33 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QRTrackerApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="550" Width="800">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="HỆ THỐNG QR TRACKER" FontSize="40" Style="{StaticResource TitleTextStyle}"/>
+            <Button  Content="QUÉT QR" Width="300" Height="100" Style="{StaticResource MainButtonStyle}"/>
+            <Button x:Name="btn_ViewHistory"  Content="LỊCH SỬ" Width="300" Height="100" Style="{StaticResource MainButtonStyle}" Click="btn_ViewHistory_Click"/>
+            <Button x:Name="btn_ListProduct"  Content="DANH SÁCH MÃ SẢN PHẨM" Width="300" Height="100" Style="{StaticResource MainButtonStyle}" Click="btn_ListProduct_Click" />
+        </StackPanel>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <Label Grid.Row="0" Grid.Column="0" Content="LIST ALL BOXES INFORMATION" Foreground="Red" FontSize="20"/>
-
-        <DataGrid Grid.Row="1" Grid.ColumnSpan="2" Name="dgDataBox" AutoGenerateColumns="False" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="*" Header="Box ID" Binding="{Binding BoxId}"/>
-                <DataGridTextColumn Width="*" Header="Product Code" Binding="{Binding ProductCode}"/>
-                <DataGridTextColumn Width="*" Header="Quantity Per Tray" Binding="{Binding QuantityPerTray}"/>
-                <DataGridTextColumn Width="*" Header="Quantity Per Box" Binding="{Binding QuantityPerBox}"/>
-                <DataGridTextColumn Width="*" Header="QR Content" Binding="{Binding Qrcontent}"/>
-                <DataGridTextColumn Width="*" Header="Status" Binding="{Binding Status}"/>
-            </DataGrid.Columns>
-        </DataGrid>
     </Grid>
 </Window>

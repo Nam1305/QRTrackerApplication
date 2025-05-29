@@ -1,0 +1,37 @@
+﻿<Window x:Class="QRTrackerApp.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Xác thực người dùng" Height="350" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow"
+        Background="#F7F7F7">
+
+    <Border BorderBrush="#CCC" BorderThickness="1" CornerRadius="10" Padding="20" Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Xác thực hệ thống" 
+                           FontSize="20" FontWeight="Bold" 
+                           Foreground="#333" HorizontalAlignment="Center" 
+                           Margin="0,0,0,15"/>
+
+                <Label Content="MÃ NHÂN VIÊN:" FontWeight="SemiBold" FontSize="14"/>
+                <TextBox x:Name="txtUsername" FontSize="14" Padding="5" Margin="0,5,0,10" BorderBrush="#999" BorderThickness="1"/>
+
+                <Label Content="MẬT KHẨU:" FontWeight="SemiBold" FontSize="14"/>
+                <PasswordBox x:Name="txtPassword" FontSize="14" Padding="5" Margin="0,5,0,15" BorderBrush="#999" BorderThickness="1"/>
+
+                <Button x:Name="btnLogin" Content="Đăng nhập" Width="100" Height="35" 
+                        Background="#007ACC" Foreground="White" FontWeight="Bold" 
+                        HorizontalAlignment="Right" BorderThickness="0" 
+                        Cursor="Hand" Click="btnLogin_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

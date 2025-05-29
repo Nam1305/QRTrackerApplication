@@ -23,5 +23,20 @@ namespace QRTrackerApp
             InitializeComponent();
            
         }
+
+        private void btn_ListProduct_Click(object sender, RoutedEventArgs e)
+        {
+            Window member = new ListProduct();
+            member.WindowState = WindowState.Maximized;
+            member.Show();
+        }
+
+        private void btn_ViewHistory_Click(object sender, RoutedEventArgs e)
+        {
+            Window member = new ViewHistory();
+            member.WindowState = WindowState.Maximized;
+            member.Show();
+        }
+
     }
 }
