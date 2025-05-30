@@ -7,28 +7,16 @@
       "RelativeMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|solutionrelative:qrtrackerapp\\listproduct.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|d:\\project\\qrtrackerapp\\qrtrackerapp\\listproduct.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|solutionrelative:qrtrackerapp\\listproduct.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|d:\\project\\qrtrackerapp\\qrtrackerapp\\viewhistory.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|solutionrelative:qrtrackerapp\\viewhistory.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|d:\\project\\qrtrackerapp\\qrtrackerapp\\editproductwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|solutionrelative:qrtrackerapp\\editproductwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|d:\\project\\qrtrackerapp\\qrtrackerapp\\editproductwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|solutionrelative:qrtrackerapp\\editproductwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA2416D6-192C-49A3-A6D6-AD8FDB5B52B7}|Repository\\Repository.csproj|d:\\project\\qrtrackerapp\\repository\\productrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CA2416D6-192C-49A3-A6D6-AD8FDB5B52B7}|Repository\\Repository.csproj|solutionrelative:repository\\productrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A8532329-2CAB-42EC-98DC-9FC242C2CD56}|Services\\Services.csproj|d:\\project\\qrtrackerapp\\services\\productservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A8532329-2CAB-42EC-98DC-9FC242C2CD56}|Services\\Services.csproj|solutionrelative:services\\productservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36512609-E1B5-4679-A556-D892373B7088}|DataAccess\\DataAccess.csproj|d:\\project\\qrtrackerapp\\dataaccess\\models\\trayscan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36512609-E1B5-4679-A556-D892373B7088}|DataAccess\\DataAccess.csproj|solutionrelative:dataaccess\\models\\trayscan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|d:\\project\\qrtrackerapp\\qrtrackerapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07EFF51E-5C9D-49A4-A3F1-608A3D207FE3}|QRTrackerApp\\QRTrackerApp.csproj|solutionrelative:qrtrackerapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,21 +26,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EditProductWindow.xaml.cs",
-              "DocumentMoniker": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\EditProductWindow.xaml.cs",
-              "RelativeDocumentMoniker": "QRTrackerApp\\EditProductWindow.xaml.cs",
-              "ToolTip": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\EditProductWindow.xaml.cs",
-              "RelativeToolTip": "QRTrackerApp\\EditProductWindow.xaml.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAUwDEAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T08:18:36.917Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -62,7 +37,32 @@
               "ToolTip": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\ListProduct.xaml",
               "RelativeToolTip": "QRTrackerApp\\ListProduct.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-29T08:06:46.797Z",
+              "WhenOpened": "2025-05-30T02:44:24.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "QRTrackerApp\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "QRTrackerApp\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T10:11:38.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ViewHistory.xaml",
+              "DocumentMoniker": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\ViewHistory.xaml",
+              "RelativeDocumentMoniker": "QRTrackerApp\\ViewHistory.xaml",
+              "ToolTip": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\ViewHistory.xaml",
+              "RelativeToolTip": "QRTrackerApp\\ViewHistory.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-29T10:11:32.227Z",
               "EditorCaption": ""
             },
             {
@@ -75,58 +75,6 @@
               "RelativeToolTip": "QRTrackerApp\\EditProductWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-29T08:08:11.336Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ListProduct.xaml.cs",
-              "DocumentMoniker": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\ListProduct.xaml.cs",
-              "RelativeDocumentMoniker": "QRTrackerApp\\ListProduct.xaml.cs",
-              "ToolTip": "D:\\Project\\QRTrackerApp\\QRTrackerApp\\ListProduct.xaml.cs",
-              "RelativeToolTip": "QRTrackerApp\\ListProduct.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T08:06:43.482Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProductRepo.cs",
-              "DocumentMoniker": "D:\\Project\\QRTrackerApp\\Repository\\ProductRepo.cs",
-              "RelativeDocumentMoniker": "Repository\\ProductRepo.cs",
-              "ToolTip": "D:\\Project\\QRTrackerApp\\Repository\\ProductRepo.cs",
-              "RelativeToolTip": "Repository\\ProductRepo.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAIwFUAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T06:48:59.934Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ProductServices.cs",
-              "DocumentMoniker": "D:\\Project\\QRTrackerApp\\Services\\ProductServices.cs",
-              "RelativeDocumentMoniker": "Services\\ProductServices.cs",
-              "ToolTip": "D:\\Project\\QRTrackerApp\\Services\\ProductServices.cs",
-              "RelativeToolTip": "Services\\ProductServices.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAqwCkAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T06:21:35.28Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TrayScan.cs",
-              "DocumentMoniker": "D:\\Project\\QRTrackerApp\\DataAccess\\Models\\TrayScan.cs",
-              "RelativeDocumentMoniker": "DataAccess\\Models\\TrayScan.cs",
-              "ToolTip": "D:\\Project\\QRTrackerApp\\DataAccess\\Models\\TrayScan.cs",
-              "RelativeToolTip": "DataAccess\\Models\\TrayScan.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-29T07:30:20.75Z",
               "EditorCaption": ""
             }
           ]
