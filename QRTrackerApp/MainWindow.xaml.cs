@@ -38,5 +38,12 @@ namespace QRTrackerApp
             member.Show();
         }
 
+        private void btnScanQR_Click(object sender, RoutedEventArgs e)
+        {
+            Window member = new QRTracker();
+            member.WindowState = WindowState.Maximized;
+            member.Show();
+
+        }
     }
 }

@@ -5,6 +5,9 @@
     <Compile Update="AddNewProductWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="CustomAlert.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="EditProductWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -12,6 +15,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="QRTracker.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="ViewHistory.xaml.cs">

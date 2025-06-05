@@ -61,11 +61,11 @@
         <DataGrid x:Name="dgListProduct" Grid.Row="6" Grid.ColumnSpan="3" AutoGenerateColumns="False"
                   IsReadOnly="True" Margin="0,20,0,40" SelectionChanged="dgListProduct_SelectionChanged"
                   RowBackground="#FFFFF5F5" AlternatingRowBackground="#FFFFEAEA" 
-                  HeadersVisibility="Column" BorderBrush="#DDD" BorderThickness="1" ColumnHeaderHeight="30" Background="#FFFFE5E5">
+                  HeadersVisibility="Column" BorderBrush="#DDD" BorderThickness="1" ColumnHeaderHeight="30" Background="#FFF">
             <DataGrid.Resources>
                 <!-- Header đỏ đậm, chữ trắng -->
                 <Style TargetType="DataGridColumnHeader">
-                    <Setter Property="Background" Value="#FFCC0000"/>
+                    <Setter Property="Background" Value="#3B82F6"/>
                     <Setter Property="Foreground" Value="White"/>
                     <Setter Property="FontSize" Value="18"/>
                     <Setter Property="FontWeight" Value="Bold"/>
@@ -84,18 +84,24 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Width="*" Header="ID" Binding="{Binding ProductId}"/>
                 <DataGridTextColumn Width="*" Header="MÃ SẢN PHẨM" Binding="{Binding ProductCode}"/>
-                <DataGridTextColumn Width="*" Header="SỐ/KHAY" Binding="{Binding QuantityPerTray}"/>
+                <DataGridTextColumn Width="*" Header="SL/KHAY" Binding="{Binding QuantityPerTray}"/>
                 <DataGridTextColumn Width="*" Header="KHAY/HỘP" Binding="{Binding TrayPerBox}"/>
-                <DataGridTextColumn Width="*" Header="SỐ/HỘP" Binding="{Binding QuantityPerBox}"/>
+                <DataGridTextColumn Width="*" Header="SL/HỘP" Binding="{Binding QuantityPerBox}"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <!-- Phân trang -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                    Grid.Row="6" Grid.Column="2" Margin="10">
-            <Button x:Name="btnPrevious" Content="◀" Width="40" Height="30" Margin="2" Click="btnPrevious_Click"/>
-            <TextBlock x:Name="txtPageInfo" VerticalAlignment="Center" FontSize="16" Margin="5"/>
-            <Button x:Name="btnNext" Content="▶" Width="40" Height="30" Margin="2" Click="btnNext_Click"/>
+            Grid.Row="6" Grid.Column="2" Margin="10" >
+            <!-- Button lùi -->
+            <Button x:Name="btnPrevious" Content="◀" Width="40" Height="30" Margin="2" Click="btnPrevious_Click"
+            Background="#007ACC" Foreground="White" FontWeight="Bold" Cursor="Hand" BorderThickness="0"/>
+            <TextBlock x:Name="txtPageInfo" VerticalAlignment="Center" FontSize="16" Margin="10,0" Foreground="#333"/>
+
+            <!-- Button tiến -->
+            <Button x:Name="btnNext" Content="▶" Width="40" Height="30" Margin="2" Click="btnNext_Click"
+            Background="#007ACC" Foreground="White" FontWeight="Bold" Cursor="Hand" BorderThickness="0"/>
+            
         </StackPanel>
     </Grid>
 </Window>

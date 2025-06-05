@@ -3,16 +3,8 @@ using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace QRTrackerApp
 {
@@ -22,9 +14,9 @@ namespace QRTrackerApp
     public partial class ListProduct : Window
     {
         ProductServices productServices;
-        private List<Product> AllProducts = new List<Product>(); // Toàn bộ danh sách
+        private List<Product> AllProducts = new List<Product>();
         private int currentPage = 1;
-        private int itemsPerPage = 10; // Số dòng mỗi trang
+        private int itemsPerPage = 10;
         private int totalPages = 1;
         private string currentKeyword = "";
 
@@ -34,7 +26,6 @@ namespace QRTrackerApp
             productServices = new ProductServices();
             LoadPage(currentPage);
         }
-
 
         private void dgListProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -61,7 +52,6 @@ namespace QRTrackerApp
             totalPages = (int)Math.Ceiling((double)totalItems / itemsPerPage);
             this.dgListProduct.ItemsSource = pagedProducts;
             txtPageInfo.Text = $"Trang {currentPage} / {totalPages}";
-
         }
 
         private void btnPrevious_Click(object sender, RoutedEventArgs e)
@@ -98,7 +88,6 @@ namespace QRTrackerApp
 
             if (loginWindow.IsAuthenticated)
             {
-                // Nếu đăng nhập đúng thì mở form thêm sản phẩm
                 AddNewProductWindow addProductWindow = new AddNewProductWindow();
                 addProductWindow.ShowDialog();
             }
@@ -106,19 +95,17 @@ namespace QRTrackerApp
 
         private void btnEditProduct_Click(object sender, RoutedEventArgs e)
         {
-            // Kiểm tra có dòng nào được chọn chưa
             if (dgListProduct.SelectedItem == null)
             {
-                MessageBox.Show("Vui lòng chọn một sản phẩm trước khi chỉnh sửa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ShowAlert("⚠ Vui lòng chọn một sản phẩm trước khi chỉnh sửa!");
                 return;
             }
+                //ShowAlert("❌ Lỗi khi lấy thông tin sản phẩm!");
+                //return;
 
-            // Ép kiểu về Product
             var selectedProduct = dgListProduct.SelectedItem as Product;
             if (selectedProduct == null)
             {
-                MessageBox.Show("Lỗi khi lấy thông tin sản phẩm!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
             }
 
             LoginWindow loginWindow = new LoginWindow();
@@ -127,12 +114,18 @@ namespace QRTrackerApp
 
             if (loginWindow.IsAuthenticated)
             {
-                // Nếu đăng nhập đúng thì mở form thêm sản phẩm
                 EditProductWindow editProductWindow = new EditProductWindow();
-                editProductWindow.SetProductToEdit(selectedProduct); 
+                editProductWindow.SetProductToEdit(selectedProduct);
                 editProductWindow.Owner = this;
                 editProductWindow.ShowDialog();
             }
+        }
+
+        private void ShowAlert(string message)
+        {
+            CustomAlert alert = new CustomAlert(message);
+            alert.Owner = this;
+            alert.ShowDialog();
         }
     }
 }

@@ -1,0 +1,22 @@
+﻿<Window x:Class="QRTrackerApp.QRTracker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QRTrackerApp"
+        mc:Ignorable="d"
+        Title="QRTracker" Height="450" Width="800">
+    <Grid>
+
+        <StackPanel>
+            <TextBlock Text="QR Tracker" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10" />
+            <TextBlock x:Name="txtStatus" FontWeight="Bold" Foreground="Red" FontSize="16" Margin="0,0,0,10" />
+
+            <UniformGrid x:Name="panelTrays" Columns="5" Rows="1" Margin="0,0,0,10" />
+
+            <TextBlock Text="Logs:" Margin="0,20,0,0" FontWeight="Bold" />
+            <TextBox x:Name="txtLog" Height="100" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+        </StackPanel>
+
+    </Grid>
+</Window>

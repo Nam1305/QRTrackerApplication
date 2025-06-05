@@ -18,7 +18,7 @@
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="HỆ THỐNG QR TRACKER" FontSize="40" Style="{StaticResource TitleTextStyle}"/>
-            <Button  Content="QUÉT QR" Width="300" Height="100" Style="{StaticResource MainButtonStyle}"/>
+            <Button x:Name="btnScanQR"  Content="QUÉT QR" Width="300" Height="100" Style="{StaticResource MainButtonStyle}" Click="btnScanQR_Click" />
             <Button x:Name="btn_ViewHistory"  Content="LỊCH SỬ" Width="300" Height="100" Style="{StaticResource MainButtonStyle}" Click="btn_ViewHistory_Click"/>
             <Button x:Name="btn_ListProduct"  Content="DANH SÁCH MÃ SẢN PHẨM" Width="300" Height="100" Style="{StaticResource MainButtonStyle}" Click="btn_ListProduct_Click" />
         </StackPanel>
