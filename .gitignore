@@ -1,1 +1,19 @@
-appsettings.json
+ appsettings.json
+# Ignore Visual Studio temporary files
+.vs/
+*.user
+*.suo
+
+# Build output
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.vsidx
+*.wpftmp.*
+*.csproj.BuildWithSkipAnalyzers
+*.editorconfig
+*.sourcelink.json
+*.AssemblyInfoInputs.cache

@@ -1,21 +1,4 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.IO.Ports;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using System.Windows;
-//using System.Windows.Controls;
-//using System.Windows.Data;
-//using System.Windows.Documents;
-//using System.Windows.Input;
-//using System.Windows.Media;
-//using System.Windows.Media.Imaging;
-//using System.Windows.Shapes;
-//using System.IO.Ports;
-//using DataAccess.DTO;
-
-using System.IO.Ports;
+﻿using System.IO.Ports;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -43,6 +26,7 @@ namespace QRTrackerApp
             InitPorts();
         }
 
+        //Hàm khởi tạo các cổng COM
         private void InitPorts()
         {
             COM3 = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
@@ -53,41 +37,60 @@ namespace QRTrackerApp
             COM4.Open();
         }
 
+        //hàm nhận dữ liệu từ COM3 và xử lý dữ liệu
         private void COM3_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             var service = new ScannerHandleServices();
+
+            //lắng nghe dữ liệu từ máy Scanner
             string raw = COM3.ReadExisting();
             Dispatcher.Invoke(() =>
             {
+                //in ra QR Content đã nhận đưuọc 
                 Log($"Đã nhận: {raw}");
-                if (service.IsTray(raw))
+
+                if (service.IsTray(raw))//kiểm tra xem có phải khay không
                 {
+                    //trích xuất các thành phần của QR CODE
                     var trayInfo = ScannerHandleServices.ExtractQRTrayInfo(raw);
-                    if (currentProductCode == null)
+
+                    if (currentProductCode == null)//xem mã hiện tại đã tồn tại hay chưa
                     {
+                        //gán cho mã hiện tại là mã vừa đưuọc quét
                         currentProductCode = trayInfo.ProductCode;
+
+                        //lấy số lượng khay / 1 hộp cần phải quét
                         expectedTrayCount = int.TryParse(trayInfo.TrayPerBox, out int count) ? count : 0;
+
+                        //Render số lượng ô cần thiết
                         RenderTraySlots(expectedTrayCount);
+
                         Log("→ Tạo session mới cho mã: " + currentProductCode);
                     }
 
+                    //trường hợp quét QR tiếp theo không trùng QR code của khay trước nó
                     if (trayInfo.ProductCode != currentProductCode)
                     {
                         txtStatus.Text = "❌ Mã khay không khớp session!";
                         return;
                     }
 
+                    //tính toán số lượng quẹt
                     if (trayQRCodes.Count >= expectedTrayCount)
                     {
                         txtStatus.Text = "✅ Đã đủ khay, hãy quét hộp.";
                         return;
                     }
 
+                    //Add Tray QR code vào listTrayQRCode
                     trayQRCodes.Add(trayInfo);
+
+                    //cập nhật số lượng cần quét
                     UpdateTraySlot(trayQRCodes.Count - 1);
 
                     if (trayQRCodes.Count == expectedTrayCount)
                     {
+                        //sau này sẽ chuyển thành pop-up
                         txtStatus.Text = "✅ Đã đủ khay, hãy quét hộp.";
                     }
                     else
@@ -95,16 +98,20 @@ namespace QRTrackerApp
                         txtStatus.Text = $"✔️ Đã quét {trayQRCodes.Count}/{expectedTrayCount} khay";
                     }
                 }
+
+                //kiểm tra xem là hộp ko
                 else if (service.IsBox(raw))
                 {
+                    //check xem đã quẹt đủ khay chưa
                     if (trayQRCodes.Count < expectedTrayCount)
                     {
                         txtStatus.Text = "❌ Chưa đủ khay, hãy quét đủ trước khi quét hộp!";
                         return;
                     }
-
+                    //trích xuất thông tin hộp
                     var boxInfo = ScannerHandleServices.ExtractQRBoxInfo(raw);
 
+                    //
                     if (boxInfo.ProductCode != currentProductCode)
                     {
                         txtStatus.Text = "❌ Mã hộp không khớp với mã session khay!";
@@ -131,24 +138,27 @@ namespace QRTrackerApp
             });
         }
 
-
+        //Hàm render ra những border lên front end
         private void RenderTraySlots(int count)
         {
             panelTrays.Children.Clear();
+
             for (int i = 0; i < count; i++)
             {
                 Border slot = new Border
                 {
-                    Width = 80,
-                    Height = 80,
                     Margin = new Thickness(5),
                     BorderBrush = Brushes.Gray,
                     BorderThickness = new Thickness(1),
-                    Background = Brushes.White
+                    Background = Brushes.White,
+                    MinWidth = 130,
+                    MinHeight = 130
                 };
+
                 panelTrays.Children.Add(slot);
             }
         }
+
 
         private void UpdateTraySlot(int index)
         {
@@ -156,8 +166,27 @@ namespace QRTrackerApp
             {
                 var border = (Border)panelTrays.Children[index];
                 border.Background = Brushes.LightGreen;
+
+                var trayInfo = trayQRCodes[index];
+
+                var textBlock = new TextBlock
+                {
+                    Text = $"Product: {trayInfo.ProductCode}\n" +
+                           $"Qty/Tray: {trayInfo.QuantityPerTray}\n" +
+                           $"Tray/Box: {trayInfo.TrayPerBox}\n" +
+                           $"Qty/Box: {trayInfo.QuantityPerBox}\n" +
+                           $"Kanban: {trayInfo.KanbanSequence}",
+                    TextWrapping = TextWrapping.Wrap,
+                    FontSize = 16, // phóng to chữ
+                    FontWeight = FontWeights.Bold, // in đậm
+                    Margin = new Thickness(5)
+                };
+
+                border.Child = textBlock;
             }
         }
+
+
 
         private void ResetSession()
         {
@@ -177,4 +206,3 @@ namespace QRTrackerApp
 }
 
 
-//thêm code để sau khi thông báo hãy quét hộp thì người dùng quét hộp dữ liệu sẽ được write vào com4

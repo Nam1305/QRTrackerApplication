@@ -5,18 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QRTrackerApp"
         mc:Ignorable="d"
-        Title="QRTracker" Height="450" Width="800">
+        Title="QRTracker" Height="600" Width="1000">
     <Grid>
-
-        <StackPanel>
+        <StackPanel Margin="10">
+            <!-- Tiêu đề -->
             <TextBlock Text="QR Tracker" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10" />
+
+            <!-- Trạng thái -->
             <TextBlock x:Name="txtStatus" FontWeight="Bold" Foreground="Red" FontSize="16" Margin="0,0,0,10" />
 
-            <UniformGrid x:Name="panelTrays" Columns="5" Rows="1" Margin="0,0,0,10" />
+            <!-- Khu vực khay, cho phép cuộn nếu quá nhiều -->
+            <ScrollViewer Height="350" VerticalScrollBarVisibility="Auto">
+                <UniformGrid x:Name="panelTrays" Columns="5" Margin="0,0,0,10" />
+            </ScrollViewer>
 
-            <TextBlock Text="Logs:" Margin="0,20,0,0" FontWeight="Bold" />
+            <!-- Logs -->
+            <TextBlock Text="Logs:" Margin="0,10,0,0" FontWeight="Bold" />
             <TextBox x:Name="txtLog" Height="100" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
         </StackPanel>
-
     </Grid>
 </Window>
