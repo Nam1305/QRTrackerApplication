@@ -42,6 +42,13 @@ namespace Services
             return productRepo.UpdateProduct(product);  
         }
 
+        public Product? GetProductByCode(string productCode)
+        {
+            if (string.IsNullOrWhiteSpace(productCode))
+                return null;
+            return productRepo.GetProductByCode(productCode.Trim());
+        }
+
 
     }
 }

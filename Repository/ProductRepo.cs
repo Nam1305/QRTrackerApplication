@@ -88,5 +88,17 @@ namespace Repository
             
         }
 
+        public Product? GetProductByCode(string code)
+        {
+            try
+            {
+                return context.Products.FirstOrDefault(p => p.ProductCode == code);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
     }
 }

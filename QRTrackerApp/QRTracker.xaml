@@ -16,7 +16,7 @@
 
             <!-- Khu vực khay, cho phép cuộn nếu quá nhiều -->
             <ScrollViewer Height="350" VerticalScrollBarVisibility="Auto">
-                <UniformGrid x:Name="panelTrays" Columns="5" Margin="0,0,0,10" />
+                <WrapPanel x:Name="panelTrays" HorizontalAlignment="Center" />
             </ScrollViewer>
 
             <!-- Logs -->

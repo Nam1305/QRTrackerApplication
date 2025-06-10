@@ -147,17 +147,43 @@ namespace QRTrackerApp
             {
                 Border slot = new Border
                 {
-                    Margin = new Thickness(5),
+                    Margin = new Thickness(10),
                     BorderBrush = Brushes.Gray,
                     BorderThickness = new Thickness(1),
                     Background = Brushes.White,
-                    MinWidth = 130,
-                    MinHeight = 130
+                    MinWidth = 260,
+                    Height = 250
                 };
 
                 panelTrays.Children.Add(slot);
             }
         }
+
+
+        //private void UpdateTraySlot(int index)
+        //{
+        //    if (index >= 0 && index < panelTrays.Children.Count)
+        //    {
+        //        var border = (Border)panelTrays.Children[index];
+        //        border.Background = Brushes.LightGreen;
+
+        //        var trayInfo = trayQRCodes[index];
+
+        //        var textBlock = new TextBlock
+        //        {
+        //            Text = $"Product: {trayInfo.ProductCode}\n" +
+        //                   $"Qty/Tray: {trayInfo.QuantityPerTray}\n" +
+        //                   $"Tray/Box: {trayInfo.TrayPerBox}\n" +
+        //                   $"Qty/Box: {trayInfo.QuantityPerBox}\n" +
+        //                   $"Kanban: {trayInfo.KanbanSequence}",
+        //            TextWrapping = TextWrapping.Wrap,
+        //            FontSize = 16, // phóng to chữ
+        //            FontWeight = FontWeights.Bold, // in đậm
+        //            Margin = new Thickness(5)
+        //        };
+        //        border.Child = textBlock;
+        //    }
+        //}
 
 
         private void UpdateTraySlot(int index)
@@ -169,22 +195,70 @@ namespace QRTrackerApp
 
                 var trayInfo = trayQRCodes[index];
 
-                var textBlock = new TextBlock
+                // Tạo stack chứa từng dòng có border riêng
+                StackPanel infoPanel = new StackPanel
                 {
-                    Text = $"Product: {trayInfo.ProductCode}\n" +
-                           $"Qty/Tray: {trayInfo.QuantityPerTray}\n" +
-                           $"Tray/Box: {trayInfo.TrayPerBox}\n" +
-                           $"Qty/Box: {trayInfo.QuantityPerBox}\n" +
-                           $"Kanban: {trayInfo.KanbanSequence}",
-                    TextWrapping = TextWrapping.Wrap,
-                    FontSize = 16, // phóng to chữ
-                    FontWeight = FontWeights.Bold, // in đậm
-                    Margin = new Thickness(5)
+                    Margin = new Thickness(5),
+                    Orientation = Orientation.Vertical
                 };
 
-                border.Child = textBlock;
+                void AddRow(string label, string value)
+                {
+                    Grid rowGrid = new Grid();
+
+                    rowGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+                    rowGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+                    var labelText = new TextBlock
+                    {
+                        Text = label,
+                        FontWeight = FontWeights.Bold,
+                        FontSize = 16,
+                        Margin = new Thickness(5),
+                        VerticalAlignment = VerticalAlignment.Center,
+                        TextWrapping = TextWrapping.Wrap
+                    };
+
+                    var valueText = new TextBlock
+                    {
+                        Text = value,
+                        FontSize = 16,
+                        FontWeight = FontWeights.Bold,
+                        Margin = new Thickness(5),
+                        VerticalAlignment = VerticalAlignment.Center,
+                        TextWrapping = TextWrapping.Wrap
+                    };
+
+                    Grid.SetColumn(labelText, 0);
+                    Grid.SetColumn(valueText, 1);
+
+                    rowGrid.Children.Add(labelText);
+                    rowGrid.Children.Add(valueText);
+
+                    // Bọc cả rowGrid trong một border để tạo khung
+                    var rowBorder = new Border
+                    {
+                        BorderBrush = Brushes.Gray,
+                        BorderThickness = new Thickness(1),
+                        Child = rowGrid,
+                        Margin = new Thickness(0, 0, 0, 2) // khoảng cách giữa các dòng
+                    };
+
+                    infoPanel.Children.Add(rowBorder);
+                }
+
+                AddRow("Product:", trayInfo.ProductCode);
+                AddRow("Qty/Tray:", trayInfo.QuantityPerTray);
+                AddRow("Tray/Box:", trayInfo.TrayPerBox);
+                AddRow("Qty/Box:", trayInfo.QuantityPerBox);
+                AddRow("Kanban:", trayInfo.KanbanSequence);
+
+                border.Child = infoPanel;
             }
         }
+
+
+
 
 
 
@@ -204,5 +278,3 @@ namespace QRTrackerApp
         }
     }
 }
-
-

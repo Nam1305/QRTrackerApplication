@@ -47,8 +47,12 @@
             <TextBox Grid.Row="3" Grid.Column="1" Width="250" Height="35" FontSize="16" Margin="0,5"
                      Background="White" BorderBrush="#BDC3C7" BorderThickness="2" Padding="5" Name="txtTrayPerBox"/>
 
+            <!-- Label: Kanban Number -->
+            <Label Grid.Row="4" Grid.Column="0" Content="Kanban Number:" Foreground="#C0392B" FontSize="18" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Width="250" Height="35" FontSize="16" Margin="0,5"
+         Background="White" BorderBrush="#BDC3C7" BorderThickness="2" Padding="5" Name="txtKanbanNumber"/>
             <!-- Button THÊM -->
-            <Button x:Name="btnAdd" Grid.Row="4" Grid.ColumnSpan="2"
+            <Button x:Name="btnAdd" Grid.Row="5" Grid.ColumnSpan="2"
                     Height="45" Width="180" Margin="0,15,0,5"
                     HorizontalAlignment="Center"
                     Content="➕ THÊM"
