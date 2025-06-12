@@ -12,8 +12,9 @@ namespace QRTrackerApp
     /// </summary>
     public partial class QRTracker : Window
     {
-        private SerialPort COM3;
+        //private SerialPort COM3;
         private SerialPort COM4;
+        private SerialPort COM5;    
         private List<QRInfo> trayQRCodes = new();
         private QRInfo? boxQR = null;
         private string? currentProductCode = null;
@@ -26,28 +27,43 @@ namespace QRTrackerApp
             InitPorts();
         }
 
-        //Hàm khởi tạo các cổng COM
+        // Hàm khởi tạo cổng COM5
         private void InitPorts()
         {
-            COM3 = new SerialPort("COM3", 9600, Parity.None, 8, StopBits.One);
-            COM3.DataReceived += COM3_DataReceived;
-            COM3.Open();
+            try
+            {
+                // Kiểm tra cổng COM5 có sẵn không
+                if (!SerialPort.GetPortNames().Contains("COM5", StringComparer.OrdinalIgnoreCase))
+                {
+                    Log("❌ Cổng COM5 không tồn tại. Vui lòng kiểm tra VSPE");
+                    MessageBox.Show("Cổng COM5 không tồn tại.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
-            COM4 = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
-            COM4.Open();
+                // Mở cổng COM5 để nhận dữ liệu
+                COM5 = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
+                COM5.DataReceived += COM5_DataReceived;
+                COM5.Open();
+                Log("✅ Đã mở cổng COM5 để nhận dữ liệu QR.");
+            }
+            catch (Exception ex)
+            {
+                Log($"❌ Lỗi khởi tạo cổng COM5: {ex.Message}");
+                MessageBox.Show($"Lỗi khởi tạo cổng COM5: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         //hàm nhận dữ liệu từ COM3 và xử lý dữ liệu
-        private void COM3_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void COM5_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             var service = new ScannerHandleServices();
 
             //lắng nghe dữ liệu từ máy Scanner
-            string raw = COM3.ReadExisting();
+            string raw = COM5.ReadExisting();
             Dispatcher.Invoke(() =>
             {
                 //in ra QR Content đã nhận đưuọc 
-                Log($"Đã nhận: {raw}");
+                Log($"Đã nhận từ COM5: {raw}");
 
                 if (service.IsTray(raw))//kiểm tra xem có phải khay không
                 {
@@ -111,7 +127,7 @@ namespace QRTrackerApp
                     //trích xuất thông tin hộp
                     var boxInfo = ScannerHandleServices.ExtractQRBoxInfo(raw);
 
-                    //
+                    //Kiếm tra xem mã hộp có khớp với mã khay hay không
                     if (boxInfo.ProductCode != currentProductCode)
                     {
                         txtStatus.Text = "❌ Mã hộp không khớp với mã session khay!";
@@ -119,19 +135,8 @@ namespace QRTrackerApp
                     }
 
                     boxQR = boxInfo;
-
-                    try
-                    {
-                        COM4.Write(raw); // Gửi dữ liệu hộp tới QRClient qua COM4
-                        txtStatus.Text = "📦 Đã quét hộp và gửi tới QRClient.";
-                        Log("→ Đã gửi QR hộp qua COM4: " + raw);
-                    }
-                    catch (Exception ex)
-                    {
-                        txtStatus.Text = "❌ Lỗi gửi dữ liệu COM4: " + ex.Message;
-                        return;
-                    }
-
+                    txtStatus.Text = "📦 Đã quét hộp và gửi tới QRClient.";
+                    Log("→ Đã xử lý QR hộp: " + raw);
                     // Reset session sau khi gửi
                     ResetSession();
                 }
@@ -158,33 +163,6 @@ namespace QRTrackerApp
                 panelTrays.Children.Add(slot);
             }
         }
-
-
-        //private void UpdateTraySlot(int index)
-        //{
-        //    if (index >= 0 && index < panelTrays.Children.Count)
-        //    {
-        //        var border = (Border)panelTrays.Children[index];
-        //        border.Background = Brushes.LightGreen;
-
-        //        var trayInfo = trayQRCodes[index];
-
-        //        var textBlock = new TextBlock
-        //        {
-        //            Text = $"Product: {trayInfo.ProductCode}\n" +
-        //                   $"Qty/Tray: {trayInfo.QuantityPerTray}\n" +
-        //                   $"Tray/Box: {trayInfo.TrayPerBox}\n" +
-        //                   $"Qty/Box: {trayInfo.QuantityPerBox}\n" +
-        //                   $"Kanban: {trayInfo.KanbanSequence}",
-        //            TextWrapping = TextWrapping.Wrap,
-        //            FontSize = 16, // phóng to chữ
-        //            FontWeight = FontWeights.Bold, // in đậm
-        //            Margin = new Thickness(5)
-        //        };
-        //        border.Child = textBlock;
-        //    }
-        //}
-
 
         private void UpdateTraySlot(int index)
         {
@@ -257,11 +235,6 @@ namespace QRTrackerApp
             }
         }
 
-
-
-
-
-
         private void ResetSession()
         {
             trayQRCodes.Clear();
@@ -278,3 +251,6 @@ namespace QRTrackerApp
         }
     }
 }
+
+
+

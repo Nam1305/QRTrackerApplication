@@ -42,5 +42,6 @@ namespace DataAccess.DTO
         public string Raw { get; set; } = string.Empty;
 
 
+
     }
 }
