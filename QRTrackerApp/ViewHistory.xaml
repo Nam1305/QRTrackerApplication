@@ -87,5 +87,10 @@
             <Button x:Name="btnNext" Content="▶" Width="35" Height="30" FontSize="14" 
                     Background="#E0E0E0" BorderBrush="#BDBDBD" Click="btnNext_Click" Cursor="Hand"/>
         </StackPanel>
+
+        <!-- Nút Quay lại -->
+        <Button x:Name="btnBack" Content="QUAY LẠI MENU" Width="130" Height="32" FontSize="14"
+                Background="#007ACC" Foreground="White" FontWeight="Bold" Click="btnBack_Click" 
+                Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" Cursor="Hand"/>
     </Grid>
 </Window>

@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Margin="10">
             <!-- Tiêu đề -->
-            <TextBlock Text="QR Tracker" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10" />
+            <TextBlock Text="📦 QR Tracker 📦" FontSize="29" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10" Background="AliceBlue"/>
 
             <!-- Trạng thái -->
             <TextBlock x:Name="txtStatus" FontWeight="Bold" Foreground="Red" FontSize="16" Margin="0,0,0,10" />
@@ -21,7 +21,12 @@
 
             <!-- Logs -->
             <TextBlock Text="Logs:" Margin="0,10,0,0" FontWeight="Bold" />
-            <TextBox x:Name="txtLog" Height="100" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" />
+            <TextBox x:Name="txtLog" Height="100" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"/>
         </StackPanel>
+
+        <!-- Nút Quay lại -->
+        <Button x:Name="btnBack" Content="QUAY LẠI MENU" Width="130" Height="32" FontSize="15"
+                Background="#007ACC" Foreground="White" FontWeight="Bold" Click="btnBack_Click"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,20" Cursor="Hand"/>
     </Grid>
 </Window>

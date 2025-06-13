@@ -127,5 +127,12 @@ namespace QRTrackerApp
             alert.Owner = this;
             alert.ShowDialog();
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }

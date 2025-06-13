@@ -29,6 +29,7 @@ namespace QRTrackerApp
             Window member = new ListProduct();
             member.WindowState = WindowState.Maximized;
             member.Show();
+            this.Close();
         }
 
         private void btn_ViewHistory_Click(object sender, RoutedEventArgs e)
@@ -36,6 +37,7 @@ namespace QRTrackerApp
             Window member = new ViewHistory();
             member.WindowState = WindowState.Maximized;
             member.Show();
+            this.Close();
         }
 
         private void btnScanQR_Click(object sender, RoutedEventArgs e)
@@ -43,7 +45,7 @@ namespace QRTrackerApp
             Window member = new QRTracker();
             member.WindowState = WindowState.Maximized;
             member.Show();
-
+            this.Close();
         }
     }
 }

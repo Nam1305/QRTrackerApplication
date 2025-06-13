@@ -8,11 +8,11 @@ namespace Test
         static void Main(string[] args)
         {
             QRGenerator qrGenerator = new QRGenerator();
-            string productCode = "VN123TEST";
-            string quantityPerTray = "20";
-            string trayPerBox = "2";
-            string quantityPerBox = "40";
-            string kanbanNumber = "16";
+            string productCode = "VN197400-53804T";
+            string quantityPerTray = "30";
+            string trayPerBox = "4";
+            string quantityPerBox = "120";
+            string kanbanNumber = "12";
             qrGenerator.GenerateQRCode(productCode, quantityPerTray, trayPerBox, quantityPerBox, kanbanNumber);
             Console.WriteLine("QR Code generated successfully.");
         }

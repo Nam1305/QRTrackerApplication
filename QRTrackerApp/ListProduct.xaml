@@ -103,6 +103,11 @@
             Background="#007ACC" Foreground="White" FontWeight="Bold" Cursor="Hand" BorderThickness="0"/>
             
         </StackPanel>
+
+        <!-- Nút Quay lại -->
+        <Button x:Name="btnBack" Content="QUAY LẠI MENU" Width="130" Height="35"
+                Background="#007ACC" Foreground="White" FontWeight="Bold" Click="btnBack_Click" 
+                Grid.Row="6" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"/>
     </Grid>
 </Window>
     

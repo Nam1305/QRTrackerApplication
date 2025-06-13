@@ -12,18 +12,19 @@ namespace QRTrackerApp
     /// </summary>
     public partial class QRTracker : Window
     {
-        //private SerialPort COM3;
+        private SerialPort COM5;
         private SerialPort COM4;
-        private SerialPort COM5;    
         private List<QRInfo> trayQRCodes = new();
         private QRInfo? boxQR = null;
         private string? currentProductCode = null;
+        private string? checkProductCode = null;
         private int expectedTrayCount = 0;
-
+        ProductServices productServices;
 
         public QRTracker()
         {
             InitializeComponent();
+            productServices = new ProductServices();
             InitPorts();
         }
 
@@ -36,10 +37,12 @@ namespace QRTrackerApp
                 if (!SerialPort.GetPortNames().Contains("COM5", StringComparer.OrdinalIgnoreCase))
                 {
                     Log("❌ Cổng COM5 không tồn tại. Vui lòng kiểm tra VSPE");
-                    MessageBox.Show("Cổng COM5 không tồn tại.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ShowAlert(" Cổng COM5 không tồn tại. LỖI!");
                     return;
                 }
-
+                //khởi tạo COM4:
+                COM4 = new SerialPort("COM4", 9600, Parity.None, 8, StopBits.One);
+                COM4.Open(); // Mở cổng COM4 để gửi dữ liệu hộp
                 // Mở cổng COM5 để nhận dữ liệu
                 COM5 = new SerialPort("COM5", 9600, Parity.None, 8, StopBits.One);
                 COM5.DataReceived += COM5_DataReceived;
@@ -49,11 +52,11 @@ namespace QRTrackerApp
             catch (Exception ex)
             {
                 Log($"❌ Lỗi khởi tạo cổng COM5: {ex.Message}");
-                MessageBox.Show($"Lỗi khởi tạo cổng COM5: {ex.Message}", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                ShowAlert(" Lỗi khởi tạo cổng COM5");
             }
         }
 
-        //hàm nhận dữ liệu từ COM3 và xử lý dữ liệu
+        //hàm nhận dữ liệu từ COM5 và xử lý dữ liệu
         private void COM5_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             var service = new ScannerHandleServices();
@@ -64,13 +67,25 @@ namespace QRTrackerApp
             {
                 //in ra QR Content đã nhận đưuọc 
                 Log($"Đã nhận từ COM5: {raw}");
-
+                
                 if (service.IsTray(raw))//kiểm tra xem có phải khay không
                 {
                     //trích xuất các thành phần của QR CODE
                     var trayInfo = ScannerHandleServices.ExtractQRTrayInfo(raw);
 
-                    if (currentProductCode == null)//xem mã hiện tại đã tồn tại hay chưa
+                    //kiếm tra xem mã khay có hợp lệ không
+                    string checkProductCode = trayInfo.ProductCode;
+                    if (checkProductCode != null) 
+                    {
+                        if (!productServices.IsProductCodeExist(checkProductCode))
+                        {
+                            Log($"Mã QR không hợp lệ");
+                            ShowAlert("MÃ QR KHÔNG HỢP LỆ!");
+                            return;
+                        }
+                    }
+
+                    if (currentProductCode == null)//xem mã hiện tại đã tồn tại hay chưa, chưa tồn tại thì gán cho mã hiện tại là mã vừa quét
                     {
                         //gán cho mã hiện tại là mã vừa đưuọc quét
                         currentProductCode = trayInfo.ProductCode;
@@ -91,6 +106,14 @@ namespace QRTrackerApp
                         return;
                     }
 
+                    // Kiểm tra Kanban trùng lặp
+                    if (trayQRCodes.Any(x => x.KanbanSequence == trayInfo.KanbanSequence))
+                    {
+                        Log($"❌ Mã Kanban {trayInfo.KanbanSequence} đã được quét trong phiên này!");
+                        ShowAlert($"MÃ KANBAN {trayInfo.KanbanSequence} ĐÃ TỒN TẠI TRONG PHIÊN!");
+                        return;
+                    }
+
                     //tính toán số lượng quẹt
                     if (trayQRCodes.Count >= expectedTrayCount)
                     {
@@ -106,7 +129,6 @@ namespace QRTrackerApp
 
                     if (trayQRCodes.Count == expectedTrayCount)
                     {
-                        //sau này sẽ chuyển thành pop-up
                         txtStatus.Text = "✅ Đã đủ khay, hãy quét hộp.";
                     }
                     else
@@ -126,7 +148,17 @@ namespace QRTrackerApp
                     }
                     //trích xuất thông tin hộp
                     var boxInfo = ScannerHandleServices.ExtractQRBoxInfo(raw);
-
+                    checkProductCode = boxInfo.ProductCode;
+                    if (checkProductCode != null)
+                    {
+                        //kiểm tra xem mã hộp có hợp lệ không
+                        if (!productServices.IsProductCodeExist(checkProductCode))
+                        {
+                            Log($"Mã QR không hợp lệ");
+                            ShowAlert("MÃ QR KHÔNG HỢP LỆ!");
+                            return;
+                        }
+                    }
                     //Kiếm tra xem mã hộp có khớp với mã khay hay không
                     if (boxInfo.ProductCode != currentProductCode)
                     {
@@ -136,6 +168,7 @@ namespace QRTrackerApp
 
                     boxQR = boxInfo;
                     txtStatus.Text = "📦 Đã quét hộp và gửi tới QRClient.";
+                    COM4.Write(raw); // Gửi dữ liệu hộp tới COM4
                     Log("→ Đã xử lý QR hộp: " + raw);
                     // Reset session sau khi gửi
                     ResetSession();
@@ -248,6 +281,29 @@ namespace QRTrackerApp
         {
             txtLog.Text += $"{DateTime.Now:HH:mm:ss} - {message}\n";
             txtLog.ScrollToEnd();
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            // Kiểm tra xem session đang hoạt động
+            if (currentProductCode != null || trayQRCodes.Count > 0)
+            {
+                ShowAlert("HOÀN THIỆN SESSION TRƯỚC KHI QUAY VỀ MENU!");
+                return;
+            }
+
+            // Nếu không có session, quay lại MainWindow
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+
+        private void ShowAlert(string message)
+        {
+            CustomAlert alert = new CustomAlert(message);
+            alert.Owner = this;
+            alert.ShowDialog();
         }
     }
 }

@@ -49,6 +49,13 @@ namespace Services
             return productRepo.GetProductByCode(productCode.Trim());
         }
 
+        public bool CheckProductCodeExists(string productCode)
+        {
+            if (string.IsNullOrWhiteSpace(productCode))
+                return false;
+            return productRepo.IsProductCodeExist(productCode.Trim());
+        }
+
 
     }
 }
