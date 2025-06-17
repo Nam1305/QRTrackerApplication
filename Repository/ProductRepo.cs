@@ -101,11 +101,5 @@ namespace Repository
             }
         }
 
-        //public bool CheckProductCodeExists(string productCode)
-        //{
-        //    if (string.IsNullOrWhiteSpace(productCode))
-        //        return false;
-        //    return context.Products.Any(p => p.ProductCode.ToLower() == productCode.Trim().ToLower());
-        //}
     }
 }

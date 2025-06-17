@@ -25,7 +25,7 @@
                        Margin="0,0,0,20"/>
 
             <!-- Nút OK -->
-            <Button Content="ĐÓNG"
+            <Button Content="Xác Thực"
                     Width="100" Height="35"
                     HorizontalAlignment="Center"
                     Click="Ok_Click"

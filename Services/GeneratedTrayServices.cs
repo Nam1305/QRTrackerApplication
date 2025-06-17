@@ -23,5 +23,14 @@ namespace Services
             }
             return generatedTrayRepo.AddGeneratedTray(tray);
         }
+
+        public int? GetGeneratedTrayIDByQRCodeContent(string qrContent)
+        {
+            if (string.IsNullOrWhiteSpace(qrContent))
+            {
+                throw new ArgumentException("QR code content cannot be null or empty", nameof(qrContent));
+            }
+            return generatedTrayRepo.GetGeneratedTrayIDByQRCodeContent(qrContent.Trim());
+        }
     }
 }

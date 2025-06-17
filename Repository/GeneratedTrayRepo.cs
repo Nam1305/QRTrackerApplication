@@ -29,5 +29,13 @@ namespace Repository
             }
         }
 
+        //hàm lấy GeneratedTrayId từ mã QR
+
+        public int? GetGeneratedTrayIDByQRCodeContent(string qrContent)
+        {
+            var tray = context.GeneratedTrays.FirstOrDefault(t => t.QrcodeContent == qrContent);
+            return tray?.GeneratedTrayId;
+        }
+
     }
 }

@@ -8,7 +8,7 @@ namespace Test
         static void Main(string[] args)
         {
             QRGenerator qrGenerator = new QRGenerator();
-            string productCode = "VN197400-53804T";
+            string productCode = "VN197400-54604T";
             string quantityPerTray = "30";
             string trayPerBox = "4";
             string quantityPerBox = "120";
