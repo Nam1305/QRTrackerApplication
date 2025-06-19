@@ -43,5 +43,17 @@ namespace QRTrackerApp
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi đăng nhập", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            if (!IsAuthenticated)
+            {
+                // Ngăn đóng cửa sổ
+                e.Cancel = true;
+            }
+        }
+
     }
 }

@@ -47,7 +47,8 @@ namespace QRTrackerApp
             // Kiểm tra ngày
             if (fromDate.HasValue && toDate.HasValue && fromDate > toDate)
             {
-                CustomAlert.Show("❗ Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu.");
+                //CustomAlert.Show("❗ Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu.");
+                MessageBox.Show("Ngày kết thúc phải lớn hơn hoặc bằng ngày bắt đầu.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -58,12 +59,14 @@ namespace QRTrackerApp
             {
                 if (!TimeSpan.TryParse(txtFromTime.Text, out TimeSpan fromParsed))
                 {
-                    CustomAlert.Show("❗ Định dạng giờ bắt đầu không hợp lệ. Vui lòng nhập đúng định dạng Giờ:Phút:Giây.");
+                    //CustomAlert.Show("❗ Định dạng giờ bắt đầu không hợp lệ. Vui lòng nhập đúng định dạng Giờ:Phút:Giây.");
+                    MessageBox.Show("Định dạng giờ bắt đầu không hợp lệ. Vui lòng nhập đúng định dạng Giờ:Phút:Giây.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 else if (fromParsed.TotalHours < 0 || fromParsed.TotalHours >= 24)
                 {
-                    CustomAlert.Show("❗ Giờ bắt đầu không hợp lệ. Giờ phải nằm trong khoảng từ 00:00:00 đến 23:59:59.");
+                    //CustomAlert.Show("❗ Giờ bắt đầu không hợp lệ. Giờ phải nằm trong khoảng từ 00:00:00 đến 23:59:59.");
+                    MessageBox.Show("Giờ bắt đầu không hợp lệ. Giờ phải nằm trong khoảng từ 00:00:00 đến 23:59:59.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 fromTime = fromParsed;
@@ -73,12 +76,14 @@ namespace QRTrackerApp
             {
                 if (!TimeSpan.TryParse(txtToTime.Text, out TimeSpan toParsed))
                 {
-                    CustomAlert.Show("❗ Định dạng giờ kết thúc không hợp lệ. Vui lòng nhập đúng định dạng Giờ:Phút:Giây.");
+                    //CustomAlert.Show("❗ Định dạng giờ kết thúc không hợp lệ. Vui lòng nhập đúng định dạng Giờ:Phút:Giây.");
+                    MessageBox.Show("Định dạng giờ kết thúc không hợp lệ. Vui lòng nhập đúng định dạng Giờ:Phút:Giây.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 else if (toParsed.TotalHours < 0 || toParsed.TotalHours >= 24)
                 {
-                    CustomAlert.Show("❗ Giờ kết thúc không hợp lệ. Giờ phải nằm trong khoảng từ 00:00:00 đến 23:59:59.");
+                    //CustomAlert.Show("❗ Giờ kết thúc không hợp lệ. Giờ phải nằm trong khoảng từ 00:00:00 đến 23:59:59.");
+                    MessageBox.Show("Giờ kết thúc không hợp lệ. Giờ phải nằm trong khoảng từ 00:00:00 đến 23:59:59.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 toTime = toParsed;

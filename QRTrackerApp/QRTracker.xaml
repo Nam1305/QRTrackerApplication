@@ -26,7 +26,7 @@
 
         <!-- Nút Quay lại -->
         <Button x:Name="btnBack" Content="QUAY LẠI MENU" Width="130" Height="32" FontSize="15"
-                Background="#007ACC" Foreground="White" FontWeight="Bold" Click="btnBack_Click"
-                HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,20" Cursor="Hand"/>
+                Background="#007ACC" Foreground="White" FontWeight="Bold" 
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,20" Cursor="Hand" Click="btnBack_Click"/>
     </Grid>
 </Window>

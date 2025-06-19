@@ -9,11 +9,11 @@ namespace Repository
 {
     public class AccountRepo
     {
-        private readonly NewDbContext context;
+        private readonly QrtrackerDbv2Context context;
 
         public AccountRepo()
         {
-            context = new NewDbContext();
+            context = new QrtrackerDbv2Context();
         }
 
         public bool ValidateLogin(string username, string password)

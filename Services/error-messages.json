@@ -1,0 +1,14 @@
+{
+  "E001": "MÃ QR KHÔNG HỢP LỆ! KHÔNG TỒN TẠI TRONG MASTER",
+  "E002": "MÃ KHAY KHÔNG KHỚP VỚI MÃ CỦA PHIÊN HIỆN TẠI",
+  "E003": "MÃ KANBAN ĐÃ TỒN TẠI TRONG PHIÊN",
+  "E004": "KHÔNG TÌM THẤY MÃ TRONG CSDL",
+  "E005": "CHƯA QUÉT KHAY! HÃY QUÉT KHAY TRƯỚC KHI QUÉT HỘP",
+  "E006": "CHƯA ĐỦ KHAY-HÃY QUÉT ĐỦ KHAY TRƯỚC KHI QUÉT HỘP",
+  "E007": "MÃ QR KHÔNG HỢP LỆ-KHÔNG NẰM TRONG MASTER!",
+  "E008": "HỘP ĐÃ ĐƯỢC QUÉT TRƯỚC ĐÓ! VUI LÒNG SỬ DỤNG HỘP KHÁC",
+  "E009": "MÃ HỘP KHÔNG KHỚP VỚI MÃ TRONG PHIÊN HIỆN TẠI",
+  "E010": "HOÀN THÀNH PHIÊN TRƯỚC KHI QUAY LẠI",
+  "E011": "LỖI! Cổng COM5 không tồn tại.",
+  "E012":  "Lỗi khởi tạo cổng COM5"
+}

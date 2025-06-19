@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,22 +17,41 @@ namespace QRTrackerApp
 {
     public partial class CustomAlert : Window
     {
+        private readonly ErrorMessageProvider errorMessageProvider;
         public CustomAlert(string message)
         {
             InitializeComponent();
+            errorMessageProvider = new ErrorMessageProvider();
             lblMessage.Text = message;
         }
 
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Owner = this;
+            loginWindow.ShowDialog();
 
+            //xác thực đúng mới đóng Cảnh Báo
+            if (loginWindow.IsAuthenticated)
+            {
+                this.Close();
+            }
+            
+        }
+        
         // Hàm static tiện lợi để gọi giống MessageBox
         public static void Show(string message)
         {
             var alert = new CustomAlert(message);
             alert.ShowDialog();
         }
+
+        private void ShowAlert(string errorKey, string title = "Thông báo")
+        {
+            string message = ErrorMessageProvider.GetMessage(errorKey);
+            CustomAlert.Show(message);
+        }
+
+
     }
 }

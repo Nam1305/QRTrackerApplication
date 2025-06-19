@@ -15,6 +15,10 @@ public partial class WorkSession
 
     public int ProductId { get; set; }
 
+    public int? ExpectedTrayCount { get; set; }
+
+    public string? IsCompleted { get; set; }
+
     public virtual Product Product { get; set; } = null!;
 
     public virtual ICollection<TrayScan> TrayScans { get; set; } = new List<TrayScan>();

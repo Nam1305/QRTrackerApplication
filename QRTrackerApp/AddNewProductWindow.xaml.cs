@@ -132,13 +132,3 @@ namespace QRTrackerApp
 
     }
 }
-
-
-// hiện tại dưới đây là database của tao, hiện tại tao đang muốn xây dựng tính năng chỉnh sửa kanbansequence cho mỗi mã sản phẩm, ví dụ ban đầu mã A001 có kanbansequnce là 12-thì sẽ có 12 generatedTray tương ứng, sau đó người dùng update xuống thành 8 thì tao muốn generatedTray sẽ cập nhật xuống thành 8 cái được phép sử dụng
-
-//thay vì xóa,ta có thể thêm trường status vào bảng GeneratedTray, nếu thừa thì sẽ set status = disable, nếu thiếu thì sẽ thêm mới vào, và khi in ra thì chỉ in những tray có status = available, và khi quét cũng chỉ chấp nhận những khay có status = available
-
-//kanbansequence đã quét thì có thể chuyển status thành disable được không?
-
-//đã quét không chuyển sang disable, mà chỉ chuyển sang disable khi người dùng chỉnh sửa kanbansequence xuống thấp hơn số lượng hiện tại
-

@@ -9,11 +9,11 @@ namespace Repository
 {
     public class TrayScanRepo
     {
-        private readonly NewDbContext context;
+        private readonly QrtrackerDbv2Context context;
 
         public TrayScanRepo()
         {
-            context = new NewDbContext();
+            context = new QrtrackerDbv2Context();
         }
 
         public bool SaveTrayScan(TrayScan trayScan)
@@ -27,6 +27,21 @@ namespace Repository
             {
                 Console.WriteLine(ex.Message);
                 return false;
+            }
+        }
+
+        public List<TrayScan> GetTrayScansBySessionId(int sessionId)
+        {
+            try
+            {
+                return context.TrayScans
+                    .Where(ts => ts.SessionId == sessionId)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return new List<TrayScan>();
             }
         }
     }

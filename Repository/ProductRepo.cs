@@ -9,11 +9,11 @@ namespace Repository
 {
     public class ProductRepo
     {
-        private readonly NewDbContext context;
+        private readonly QrtrackerDbv2Context context;
 
         public ProductRepo()
         {
-            context = new NewDbContext();
+            context = new QrtrackerDbv2Context();
         }
 
         public List<Product> LoadPagedProducts(int page, int pageSize, string? keyword = null)
@@ -98,6 +98,20 @@ namespace Repository
             {
                 Console.WriteLine(ex.Message);
                 return null;
+            }
+        }
+
+        public string GetProductCodeById(int productId)
+        {
+            try
+            {
+                var product = context.Products.FirstOrDefault(p => p.ProductId == productId);
+                return product?.ProductCode ?? string.Empty;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return string.Empty;
             }
         }
 

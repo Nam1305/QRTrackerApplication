@@ -97,15 +97,15 @@ namespace QRTrackerApp
         {
             if (dgListProduct.SelectedItem == null)
             {
-                ShowAlert("⚠ Vui lòng chọn một sản phẩm trước khi chỉnh sửa!");
+                MessageBox.Show("Vui lòng chọn sản phẩm cần chỉnh sửa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-                //ShowAlert("❌ Lỗi khi lấy thông tin sản phẩm!");
-                //return;
 
             var selectedProduct = dgListProduct.SelectedItem as Product;
             if (selectedProduct == null)
             {
+                MessageBox.Show("❌ Lỗi khi lấy thông tin sản phẩm!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
 
             LoginWindow loginWindow = new LoginWindow();

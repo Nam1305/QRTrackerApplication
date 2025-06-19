@@ -15,13 +15,13 @@ namespace Services
         {
             workSessionRepo = new WorkSessionRepo();
         }
-        public int CreateNewSession(string productCode)
+        public int CreateNewSession(string productCode, int expectedTrayCount)
         {
             if (string.IsNullOrWhiteSpace(productCode))
             {
                 throw new ArgumentException("Product code cannot be null or empty.");
             }
-            return workSessionRepo.CreateSession(productCode.Trim());
+            return workSessionRepo.CreateSession(productCode.Trim(), expectedTrayCount);
         }
 
         public bool UpdateSessionInfo(int sessionId, WorkSession updatedSession)
@@ -42,5 +42,13 @@ namespace Services
             return workSessionRepo.IsBoxScanned(boxSequence.Trim());
         }
 
+        public WorkSession? GetUnfinishedSession()
+        {
+            return workSessionRepo.GetUnfinishedSession();
+        }
+
     }
 }
+
+
+// tao đã có hàm GetUnfinishedSession trong WorkSessionServices, hãy sửa lại QRTracker.xaml.cs để thực hiện tính năng khi người dùng

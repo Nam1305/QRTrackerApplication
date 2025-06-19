@@ -5,13 +5,13 @@ using Microsoft.Extensions.Configuration;
 
 namespace DataAccess.Models;
 
-public partial class NewDbContext : DbContext
+public partial class QrtrackerDbv2Context : DbContext
 {
-    public NewDbContext()
+    public QrtrackerDbv2Context()
     {
     }
 
-    public NewDbContext(DbContextOptions<NewDbContext> options)
+    public QrtrackerDbv2Context(DbContextOptions<QrtrackerDbv2Context> options)
         : base(options)
     {
     }
@@ -30,11 +30,11 @@ public partial class NewDbContext : DbContext
     {
         var builder = new ConfigurationBuilder();
         builder.SetBasePath(Directory.GetCurrentDirectory());
-        builder.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+        //builder.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
         var configuration = builder.Build();
-        optionsBuilder.UseSqlite(configuration.GetConnectionString("Default"));
+        var connectionStringUrl = Path.Combine(Directory.GetCurrentDirectory(), "Database", "QRTrackerDBV2.db");
+        optionsBuilder.UseSqlite($"Data Source={connectionStringUrl}");
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Account>(entity =>
@@ -44,8 +44,6 @@ public partial class NewDbContext : DbContext
             entity.ToTable("Account");
 
             entity.HasIndex(e => e.Username, "IX_Account_Username").IsUnique();
-
-            entity.Property(e => e.SupervisorId).HasColumnName("SupervisorID");
         });
 
         modelBuilder.Entity<GeneratedTray>(entity =>
@@ -109,10 +107,10 @@ public partial class NewDbContext : DbContext
 
             entity.Property(e => e.SessionId).HasColumnName("SessionID");
             entity.Property(e => e.ProductId)
-                .HasColumnType("integer(10)")
+                .HasColumnType("INTEGER(10)")
                 .HasColumnName("ProductID");
-            entity.Property(e => e.ScanDate).HasColumnType("date");
-            entity.Property(e => e.ScanTime).HasColumnType("time");
+            entity.Property(e => e.ScanDate).HasColumnType("DATE");
+            entity.Property(e => e.ScanTime).HasColumnType("TIME");
 
             entity.HasOne(d => d.Product).WithMany(p => p.WorkSessions)
                 .HasForeignKey(d => d.ProductId)

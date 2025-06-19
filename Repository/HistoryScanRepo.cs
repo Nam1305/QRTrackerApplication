@@ -12,11 +12,11 @@ namespace Repository
 {
     public class HistoryScanRepo
     {
-        private readonly NewDbContext context;
+        private readonly QrtrackerDbv2Context context;
 
         public HistoryScanRepo()
         {
-            context = new NewDbContext();
+            context = new QrtrackerDbv2Context();
         }
 
         public List<HistoryScanDTO> GetHistoryScan(

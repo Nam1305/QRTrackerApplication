@@ -9,16 +9,16 @@ namespace Repository
 {
     public class WorkSessionRepo
     {
-        private readonly NewDbContext context;
+        private readonly QrtrackerDbv2Context context;
         private readonly ProductRepo productRepo;
 
         public WorkSessionRepo()
         {
-            context = new NewDbContext();
+            context = new QrtrackerDbv2Context();
             productRepo = new ProductRepo();
         }
 
-        public int CreateSession(string productCode)
+        public int CreateSession(string productCode, int expectedTrayCount)
         {
             Product? product = productRepo.GetProductByCode(productCode);
             if (product == null)
@@ -27,7 +27,9 @@ namespace Repository
             }
             WorkSession newSession = new WorkSession
             {
-                ProductId = product.ProductId
+                ProductId = product.ProductId,
+                ExpectedTrayCount = expectedTrayCount,
+
             };
 
             context.WorkSessions.Add(newSession);
@@ -45,6 +47,7 @@ namespace Repository
             existingSession.ScanTime = updated.ScanTime;
             existingSession.ScanDate = updated.ScanDate;
             existingSession.BoxSequence = updated.BoxSequence;
+            existingSession.IsCompleted = updated.IsCompleted;
             context.SaveChanges();
             return true;
         }
@@ -54,6 +57,16 @@ namespace Repository
             return context.WorkSessions.Any(s => s.BoxSequence == boxSequence);
         }
 
+        public WorkSession? GetUnfinishedSession()
+        {
+            return context.WorkSessions
+            .Where(s => s.IsCompleted == null)
+            .OrderByDescending(s => s.SessionId)
+            .FirstOrDefault();
+        }
+
 
     }
 }
+
+//

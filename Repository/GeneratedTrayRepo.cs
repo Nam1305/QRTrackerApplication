@@ -9,10 +9,10 @@ namespace Repository
 {
     public class GeneratedTrayRepo
     {
-        private readonly NewDbContext context;
+        private readonly QrtrackerDbv2Context context;
         public GeneratedTrayRepo()
         {
-            context = new NewDbContext();
+            context = new QrtrackerDbv2Context();
         }
 
         public bool AddGeneratedTray(List<GeneratedTray> trays)
