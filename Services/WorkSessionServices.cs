@@ -47,6 +47,15 @@ namespace Services
             return workSessionRepo.GetUnfinishedSession();
         }
 
+        public void UpdateStatusWithError(int? sessionId, string errorKey)
+        {
+            if (sessionId == null || string.IsNullOrWhiteSpace(errorKey))
+            {
+                throw new ArgumentException("Session ID and error key cannot be null or empty.");
+            }
+            workSessionRepo.UpdateStatusWithError(sessionId, errorKey.Trim());
+
+        }
     }
 }
 

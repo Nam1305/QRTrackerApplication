@@ -1,4 +1,5 @@
 ﻿using DataAccess.Models;
+using SQLitePCL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace Repository
             {
                 ProductId = product.ProductId,
                 ExpectedTrayCount = expectedTrayCount,
-
+                Status = 2, // processing
             };
 
             context.WorkSessions.Add(newSession);
@@ -47,7 +48,9 @@ namespace Repository
             existingSession.ScanTime = updated.ScanTime;
             existingSession.ScanDate = updated.ScanDate;
             existingSession.BoxSequence = updated.BoxSequence;
-            existingSession.IsCompleted = updated.IsCompleted;
+            existingSession.Status = updated.Status;
+            existingSession.ErrorKey = updated.ErrorKey;
+            context.WorkSessions.Update(existingSession);
             context.SaveChanges();
             return true;
         }
@@ -59,10 +62,24 @@ namespace Repository
 
         public WorkSession? GetUnfinishedSession()
         {
+            // Status: 2 = processing, 4 = error
             return context.WorkSessions
-            .Where(s => s.IsCompleted == null)
-            .OrderByDescending(s => s.SessionId)
-            .FirstOrDefault();
+                .Where(s => s.Status == 2 || s.Status == 4)
+                .OrderByDescending(s => s.SessionId)
+                .FirstOrDefault();
+        }
+
+        public void UpdateStatusWithError(int? sessionId, string errorKey)
+        {
+            if (sessionId == null) return;
+
+            var session = context.WorkSessions.FirstOrDefault(s => s.SessionId == sessionId);
+            if (session != null)
+            {
+                session.Status = 4; // lỗi
+                session.ErrorKey = errorKey;
+                context.SaveChanges();
+            }
         }
 
 

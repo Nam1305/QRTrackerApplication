@@ -44,16 +44,16 @@ namespace QRTrackerApp
             }
         }
 
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
-        {
-            base.OnClosing(e);
+        //protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        //{
+        //    base.OnClosing(e);
 
-            if (!IsAuthenticated)
-            {
-                // Ngăn đóng cửa sổ
-                e.Cancel = true;
-            }
-        }
+        //    if (!IsAuthenticated)
+        //    {
+        //        // Ngăn đóng cửa sổ
+        //        e.Cancel = true;
+        //    }
+        //}
 
     }
 }

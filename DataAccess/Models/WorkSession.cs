@@ -17,7 +17,11 @@ public partial class WorkSession
 
     public int? ExpectedTrayCount { get; set; }
 
-    public string? IsCompleted { get; set; }
+    public int? Status { get; set; }
+
+    public string? ErrorKey { get; set; }
+
+    public virtual ICollection<ErrorLog> ErrorLogs { get; set; } = new List<ErrorLog>();
 
     public virtual Product Product { get; set; } = null!;
 
