@@ -41,8 +41,10 @@ namespace QRTrackerApp.Handlers
 
         public void HandleTrayScan(string raw)
         {
+            //trích xuất thông tin tray nhận được từ sự kiện DataReceived
             var trayInfo = ScannerHandleServices.ExtractQRTrayInfo(raw);
 
+            //E001: KIỂM TRA XEM MÃ QR CÓ HỢP LỆ KHÔNG
             if (!productServices.IsProductCodeExist(trayInfo.ProductCode))
             {
                 Log?.Invoke("? Mã QR không hợp lệ, không tồn tại trong MASTER");
@@ -52,13 +54,17 @@ namespace QRTrackerApp.Handlers
                 return;
             }
 
+            //Nếu CurrentProductCode là null tức là chưa có session nào được khởi tạo
             if (sessionManager.CurrentProductCode == null)
             {
+                //tạo 1 session mới
                 sessionManager.StartNewSession(trayInfo.ProductCode, int.TryParse(trayInfo.TrayPerBox, out int count) ? count : 0);
+                //render Tray slot
                 RenderTraySlots?.Invoke(sessionManager.ExpectedTrayCount);
                 Log?.Invoke("Đã tạo Session mới có ID = " + sessionManager.CurrentSessionID);
             }
 
+            //E002: KIỂM TRA MÃ SẢN PHẨM CÓ TRÙNG VỚI MÃ SP CỦA SESSION HIỆN TẠI KHÔNG
             if (trayInfo.ProductCode != sessionManager.CurrentProductCode)
             {
                 string msg = ErrorMessageProvider.GetMessage("E002");
@@ -69,6 +75,7 @@ namespace QRTrackerApp.Handlers
                 return;
             }
 
+            //E003: KIỂM TRA MÃ KANBAN ĐÃ QUÉT TRONG SESSION NÀY CHƯA
             if (sessionManager.TrayQRCodes.Any(x => x.KanbanSequence == trayInfo.KanbanSequence))
             {
                 string msg = ErrorMessageProvider.GetMessage("E003");
@@ -79,16 +86,20 @@ namespace QRTrackerApp.Handlers
                 return;
             }
 
+            //Kiếm tra xem đã đủ khay hay chưa
             if (sessionManager.TrayQRCodes.Count >= sessionManager.ExpectedTrayCount)
             {
                 UpdateStatus?.Invoke("Đã quét đủ khay, hãy quét hộp.");
                 return;
             }
 
+            //thêm thông tin tray đã quét vào danh sách
             sessionManager.TrayQRCodes.Add(trayInfo);
-            UpdateTraySlot?.Invoke(sessionManager.TrayQRCodes.Count - 1);
+            UpdateTraySlot?.Invoke(sessionManager.TrayQRCodes.Count - 1);//cập nhật UI
 
+            //Lấy thông tin GeneratedTrayID từ mã QR
             int? generatedTrayID = generatedTrayService.GetGeneratedTrayIDByQRCodeContent(raw);
+            //Nếu không tìm thấy GeneratedTrayID tương ứng với mã QR đã quét báo lỗi E004
             if (generatedTrayID == null)
             {
                 string msg = ErrorMessageProvider.GetMessage("E004");
@@ -98,7 +109,7 @@ namespace QRTrackerApp.Handlers
                 workSessionService.UpdateStatusWithError(sessionManager.CurrentSessionID, "E004");
                 return;
             }
-
+            //lưu thông tin quét khay vào database
             trayScanService.SaveTrayScan(new TrayScan
             {
                 TrayQrcode = raw,
@@ -135,6 +146,7 @@ namespace QRTrackerApp.Handlers
                 return;
             }
 
+            //extract box info from QR code
             var boxInfo = ScannerHandleServices.ExtractQRBoxInfo(raw);
 
             if (!productServices.IsProductCodeExist(boxInfo.ProductCode))

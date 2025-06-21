@@ -58,6 +58,3 @@ namespace Services
         }
     }
 }
-
-
-// tao đã có hàm GetUnfinishedSession trong WorkSessionServices, hãy sửa lại QRTracker.xaml.cs để thực hiện tính năng khi người dùng

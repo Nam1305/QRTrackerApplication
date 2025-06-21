@@ -77,16 +77,18 @@ namespace QRTrackerApp
             var (hasUnfinished, errorKey) = sessionManager.RestoreUnfinishedSession();
             if (hasUnfinished)
             {
-                RenderTraySlots(sessionManager.ExpectedTrayCount);
+                //nếu có session chưa hoàn tất, render các slot khay và cập nhật UI
+                RenderTraySlots(sessionManager.ExpectedTrayCount);//01
                 for (int i = 0; i < sessionManager.TrayQRCodes.Count; i++)
-                    UpdateTraySlot(i);
-
+                    UpdateTraySlot(i);//cập nhật UI//02
+                //cập nhật log
                 uiLogger.Log($"⚠️ Phục hồi session chưa hoàn tất - ID = {sessionManager.CurrentSessionID}, đã quét {sessionManager.TrayQRCodes.Count}/{sessionManager.ExpectedTrayCount} khay");
 
+                //cập nhật status
                 txtStatus.Text = sessionManager.TrayQRCodes.Count == sessionManager.ExpectedTrayCount
                     ? "✅ Đã đủ khay, hãy quét hộp."
                     : $"✔️ Đã quét {sessionManager.TrayQRCodes.Count}/{sessionManager.ExpectedTrayCount} khay";
-
+                //check errorKey để hiển thị thông báo lỗi nếu có
                 if (!string.IsNullOrEmpty(errorKey))
                 {
                     ShowAlert(errorKey);
